@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from 'uuid';
 
 let count = 0;
 do {
-  count++;
   const phoneNumber = `315${Math.floor(Math.random() * 10000000000)}`
   const psw = uuidv4();
 
@@ -30,6 +29,13 @@ do {
     "body": body,
     "method": "POST"
   });
-  const data = await response.json();
-  console.log(`${body}: ${data.msg} - count: ${count}`);
+
+  try {
+    count++;
+    const data = await response.json();
+    console.log(`${body}: ${data.msg} - count: ${count}`);
+  } catch (e) {
+    console.log(`${body}: ERROR: no se puede obtener msg ${e}`);
+  }
+
 } while (true);
