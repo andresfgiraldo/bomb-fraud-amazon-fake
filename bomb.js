@@ -35,7 +35,7 @@ do {
     const data = await response.json();
     console.log(`${body}: ${data.msg} - count: ${count}`);
   } catch (e) {
-    console.log(`${body}: ERROR: no se puede obtener msg ${e}`);
+    console.log(`ERROR: no se puede obtener body response => ${e}`);
   }
 
 } while (true);
